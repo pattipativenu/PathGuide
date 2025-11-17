@@ -17,6 +17,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Set dummy API key for build (actual key set at runtime)
+ENV OPENAI_API_KEY=sk-dummy-key-for-build-only
+
 # Build Next.js
 RUN npm run build
 
